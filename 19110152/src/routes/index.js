@@ -1,18 +1,18 @@
+const newHome = require
+const blogControllers = require('../app/controllers/blogController');
+const routerBlog = require('./blog')
 const express = require('express');
-const router = express.Router();
-const mygroupController = require('../app/controllers/mygroupController');
+const app = express();
+const bodyParser = require('body-parser')
+const detailsBlog = require('./details')
 
 
 
 function route(app){
-        //
-        app.get('/message/:mssv',mygroupController.getMessageById);
-        app.get('/message/',mygroupController.getMessage);
-        app.post('/test',mygroupController.addStudent);
-        app.get('/:mssv',mygroupController.getMessageById);
-        //
-        // Path: "/" return list in mygroup
-        app.get('/',mygroupController.getAll);
-}
-module.exports = route;
+    app.use('/',routerBlog);
+    app.use('/add',routerBlog)
+    app.use('/details',detailsBlog)
 
+}
+
+module.exports = route;
